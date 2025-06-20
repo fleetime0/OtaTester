@@ -1,0 +1,8 @@
+{
+    "commonapi.ota.FOTAMPUUpdate" : {
+        "service_id": 4112,
+        "instances" : {
+            "commonapi.ota.FOTAMPUUpdate": 4
+        }
+    }
+}

@@ -1,0 +1,6 @@
+.cache/
+.vscode/
+**/build*/
+**/*output*/
+tool/commonapi_core_generator/configuration/
+tool/commonapi_someip_generator/configuration/

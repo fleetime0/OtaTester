@@ -1,0 +1,48 @@
+{
+    "unicast" : "192.168.2.242",
+    "logging" :
+    {
+        "level" : "debug",
+        "console" : "true",
+        "file" : { "enable" : "false", "path" : "/var/log/vsomeip.log" },
+        "dlt" : "false"
+    },
+    "applications" :
+    [
+        {
+            "name" : "otatester",
+            "id" : "0x1212"
+        }
+    ],
+    "services" :
+    [
+        {
+            "service" : "0x1010",
+            "instance" : "0x4",
+            "reliable" : { "port" : "30517", "enable-magic-cookies" : "false" }
+        }
+    ],
+    "clients" :
+    [
+        {
+            "service" : "0x1010",
+            "instance" : "0x4",
+            "reliable" : [ " 46520" ]
+        }
+    ],
+    "routing" : "otatester",
+    "service-discovery" :
+    {
+        "enable" : "true",
+        "multicast" : "239.127.3.1",
+        "port" : "30490",
+        "protocol" : "udp",
+        "initial_delay_min" : "10",
+        "initial_delay_max" : "50",
+        "repetitions_base_delay" : "50",
+        "repetitions_max" : "3",
+        "ttl" : "3",
+        "cyclic_offer_delay" : "1000",
+        "request_response_delay" : "1500"
+    }
+}

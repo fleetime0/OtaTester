@@ -1,0 +1,17 @@
+services:
+  ubuntu-build:
+    image: ubuntu-build-docker
+    container_name: ubuntu-build
+    volumes:
+      - .:/workspace
+    user: "1000:1000"
+    working_dir: /workspace
+    command: >
+      bash -c "
+        mkdir -p build &&
+        cd build &&
+        cmake .. &&
+        make -j$(nproc) &&
+        make install
+      "
+    restart: "no"

@@ -1,0 +1,15 @@
+[submodule "3rdparty/boost"]
+	path = 3rdparty/boost
+	url = https://github.com/fleetime0/boost.git
+[submodule "3rdparty/capicxx-someip-runtime"]
+	path = 3rdparty/capicxx-someip-runtime
+	url = https://github.com/COVESA/capicxx-someip-runtime.git
+[submodule "3rdparty/capicxx-core-runtime"]
+	path = 3rdparty/capicxx-core-runtime
+	url = https://github.com/fleetime0/capicxx-core-runtime.git
+[submodule "3rdparty/vsomeip"]
+	path = 3rdparty/vsomeip
+	url = https://github.com/COVESA/vsomeip.git
+[submodule "3rdparty/nlohmann_json"]
+	path = 3rdparty/nlohmann_json
+	url = https://github.com/nlohmann/json.git
