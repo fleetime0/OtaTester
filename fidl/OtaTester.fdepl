@@ -1,0 +1,102 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "OtaTester.fidl"
+
+define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMPUUpdate {
+    SomeIpServiceID = 4112
+
+    method BldUpdtTask {
+        SomeIpMethodID = 1
+        SomeIpReliable = true
+        in {
+            MPUUpdateTaskBuildingReq {
+                SomeIpStringLengthWidth = 4
+            }
+        }
+    }
+
+    method StwrTrsmtPrgs {
+        SomeIpMethodID = 2
+        SomeIpReliable = true
+        out {
+            MPUTransmitProgressResp {
+                SomeIpStringLengthWidth = 4
+            }
+        }
+    }
+
+    method StopUpdt {
+        SomeIpMethodID = 3
+        SomeIpReliable = true
+        in {
+            MPUUpdateStopReq {
+                SomeIpStructLengthWidth = 4
+            }
+        }
+        out {
+            MPUUpdateStopResp {
+                SomeIpStructLengthWidth = 4
+            }
+        }
+    }
+
+    method StartInst {
+        SomeIpMethodID = 4
+        SomeIpReliable = true
+        out {
+            MPUInstallStartResp {
+                SomeIpStructLengthWidth = 4
+            }
+        }
+    }
+
+    method ReqInstResult {
+        SomeIpMethodID = 5
+        SomeIpReliable = true
+        out {
+            MPUInstallResultResp {
+                SomeIpStringLengthWidth = 4
+            }
+        } 
+    }
+
+    method SwitchABBank {
+        SomeIpMethodID = 7
+        SomeIpReliable = true
+        in {
+            MPUStatusSwitchReq {
+                SomeIpStructLengthWidth = 4
+            }
+        }
+        out {
+            MPUStatusSwitchResp {
+                SomeIpStructLengthWidth = 4
+            }
+        } 
+    }
+
+    method GetUpdtTaskStatus {
+        SomeIpMethodID = 8
+        SomeIpReliable = true
+        out {
+            MPUGetStatusResp {
+                SomeIpStructLengthWidth = 4
+            }
+        }
+    }
+
+    method ReqSwitchResult {
+        SomeIpMethodID = 10
+        out {
+            MPUSwitchResultResp {
+                SomeIpStringLengthWidth = 4
+            }
+        }
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for provider as Service {
+    instance commonapi.ota.FOTAMPUUpdate {
+        InstanceId = "commonapi.ota.FOTAMPUUpdate"
+        SomeIpInstanceID = 4
+    }
+}

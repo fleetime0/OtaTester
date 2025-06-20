@@ -1,0 +1,117 @@
+package commonapi.ota
+
+interface FOTAMPUUpdate {
+        version {
+                major 1
+                minor 0
+        }
+
+    struct MPUUpdateTaskBuildingResp {
+        UInt16 TaskID
+        UInt8 BuildingResult
+    }
+
+    struct MPUUpdateStopReq {
+        UInt16 TaskID
+        UInt8 StopType
+    }
+
+    struct MPUUpdateStopResp {
+        UInt16 TaskID
+        UInt8 StopType
+        UInt8 StopResult
+    }
+
+    struct MPUInstallStartResp {
+        UInt16 TaskID
+        UInt8 StartInstallResult
+    }
+
+    struct MPUStatusSwitchReq {
+        UInt16 TaskID
+        UInt8 SwitchType
+    }
+
+    struct MPUStatusSwitchResp {
+        UInt16 TaskID
+        UInt8 SwitchType
+        UInt8 SwitchResult
+    }
+
+    struct MPUGetStatusResp {
+        UInt16 TaskID
+        UInt8 CurrentStatus
+    }
+
+    method BldUpdtTask {
+        in {
+            String MPUUpdateTaskBuildingReq
+        }
+        out {
+            MPUUpdateTaskBuildingResp MPUUpdateTaskBuildingResp
+        }
+    }
+
+    method StwrTrsmtPrgs {
+        in {
+            UInt16 MPUTransmitProgressReq
+        }
+        out {
+            String MPUTransmitProgressResp
+        }
+    }
+
+    method StopUpdt {
+        in {
+            MPUUpdateStopReq MPUUpdateStopReq
+        }
+        out {
+            MPUUpdateStopResp MPUUpdateStopResp
+        }
+    }
+
+    method StartInst {
+        in {
+            UInt16 MPUInstallStartReq
+        }
+        out {
+            MPUInstallStartResp MPUInstallStartResp
+        }
+    }
+
+    method ReqInstResult {
+        in {
+            UInt16 MPUInstallResultReq
+        }
+        out {
+            String MPUInstallResultResp
+        }
+    }
+
+    method SwitchABBank {
+        in {
+            MPUStatusSwitchReq MPUStatusSwitchReq
+        }
+        out {
+            MPUStatusSwitchResp MPUStatusSwitchResp
+        }
+    }
+
+    method GetUpdtTaskStatus {
+        in {
+            UInt16 MPUGetStatusReq
+        }
+        out {
+            MPUGetStatusResp MPUGetStatusResp
+        }
+    }
+
+    method ReqSwitchResult {
+        in {
+            UInt16 MPUSwitchResultReq
+        }
+        out {
+            String MPUSwitchResultResp
+        }
+    }
+}
