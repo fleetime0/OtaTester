@@ -151,8 +151,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus StopUpdt(const datatypes::MPUUpdateStopReq &req, datatypes::MPUUpdateStopReq &resp,
-  //                                  std::int32_t timeout_ms);
+  datatypes::ResultStatus StopUpdt(const datatypes::MPUUpdateStopReq &req, datatypes::MPUUpdateStopResp &resp,
+                                   std::int32_t timeout_ms);
 
   /**
    * @brief 开始安装
@@ -161,8 +161,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus StartInst(std::uint16_t task_id, datatypes::MPUInstallStartResp &resp,
-  //                                   std::int32_t timeout_ms);
+  datatypes::ResultStatus StartInst(std::uint16_t task_id, datatypes::MPUInstallStartResp &resp,
+                                    std::int32_t timeout_ms);
 
   /**
    * @brief 获取安装结果
@@ -171,8 +171,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus ReqInstResult(std::uint16_t task_id, datatypes::MPUInstallResultResp &resp,
-  //                                       std::int32_t timeout_ms);
+  datatypes::ResultStatus ReqInstResult(std::uint16_t task_id, datatypes::MPUInstallResultResp &resp,
+                                        std::int32_t timeout_ms);
 
   /**
    * @brief 开始切换 AB 分区
@@ -181,8 +181,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus SwitchABBank(std::uint16_t task_id, datatypes::MPUStatusSwitchResp &resp,
-  //                                      std::int32_t timeout_ms);
+  datatypes::ResultStatus SwitchABBank(std::uint16_t task_id, datatypes::MPUStatusSwitchResp &resp,
+                                       std::int32_t timeout_ms);
 
   /**
    * @brief 获取当前OTA升级任务状态
@@ -191,8 +191,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus GetUpdtTaskStatus(std::uint16_t task_id, datatypes::MPUGetStatusResp &resp,
-  //                                           std::int32_t timeout_ms);
+  datatypes::ResultStatus GetUpdtTaskStatus(std::uint16_t task_id, datatypes::MPUGetStatusResp &resp,
+                                            std::int32_t timeout_ms);
 
   /**
    * @brief 获取分区切换结果
@@ -201,8 +201,8 @@ class OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  // datatypes::ResultStatus ReqSwitchResult(std::uint16_t task_id, datatypes::MPUSwitchResultResp &resp,
-  //                                         std::int32_t timeout_ms);
+  datatypes::ResultStatus ReqSwitchResult(std::uint16_t task_id, datatypes::MPUSwitchResultResp &resp,
+                                          std::int32_t timeout_ms);
 
   private:
   std::shared_ptr<v1::commonapi::ota::FOTAMPUUpdateProxy<>> proxy_;

@@ -90,4 +90,145 @@ datatypes::ResultStatus OtaHelper::StwrTrsmtPrgs(std::uint16_t task_id, datatype
   return static_cast<datatypes::ResultStatus>(call_status);
 }
 
+datatypes::ResultStatus OtaHelper::StopUpdt(const datatypes::MPUUpdateStopReq &req, datatypes::MPUUpdateStopResp &resp,
+                                            std::int32_t timeout_ms) {
+  FOTAMPUUpdate::MPUUpdateStopReq local_req;
+  local_req.setTaskID(req.task_id);
+  local_req.setStopType(req.stop_type);
+
+  CommonAPI::CallStatus call_status;
+
+  FOTAMPUUpdate::MPUUpdateStopResp local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->StopUpdt(local_req, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    resp.task_id = local_resp.getTaskID();
+    resp.stop_type = local_resp.getStopType();
+    resp.StopResult = local_resp.getStopResult();
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
+datatypes::ResultStatus OtaHelper::StartInst(std::uint16_t task_id, datatypes::MPUInstallStartResp &resp,
+                                             std::int32_t timeout_ms) {
+  CommonAPI::CallStatus call_status;
+
+  FOTAMPUUpdate::MPUInstallStartResp local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->StartInst(task_id, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    resp.task_id = local_resp.getTaskID();
+    resp.start_install_result = local_resp.getStartInstallResult();
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
+datatypes::ResultStatus OtaHelper::ReqInstResult(std::uint16_t task_id, datatypes::MPUInstallResultResp &resp,
+                                                 std::int32_t timeout_ms) {
+  CommonAPI::CallStatus call_status;
+
+  std::string local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->ReqInstResult(task_id, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    nlohmann::json j = nlohmann::json::parse(local_resp);
+    resp.task_id = j["taskID"].get<std::uint16_t>();
+    resp.install_result = j["installResult"].get<std::uint8_t>();
+    resp.install_percent = j["installPercent"].get<std::uint8_t>();
+    for (const auto &module_install_result: j["moduleInstallResults"]) {
+      datatypes::ModuleInstallResult local_module_install_result;
+      local_module_install_result.module_id = module_install_result["moduleID"].get<std::string>();
+      local_module_install_result.install_detailed_result =
+              module_install_result["installDetailedResult"].get<std::uint8_t>();
+      local_module_install_result.module_install_percent =
+              module_install_result["moduleInstallPercent"].get<std::uint8_t>();
+      resp.module_install_results.push_back(local_module_install_result);
+    }
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
+datatypes::ResultStatus OtaHelper::SwitchABBank(std::uint16_t task_id, datatypes::MPUStatusSwitchResp &resp,
+                                                std::int32_t timeout_ms) {
+  FOTAMPUUpdate::MPUStatusSwitchReq local_req;
+  local_req.setTaskID(task_id);
+  local_req.setSwitchType(1);
+
+  CommonAPI::CallStatus call_status;
+
+  FOTAMPUUpdate::MPUStatusSwitchResp local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->SwitchABBank(local_req, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    resp.task_id = local_resp.getTaskID();
+    resp.switch_type = local_resp.getSwitchType();
+    resp.switch_result = local_resp.getSwitchResult();
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
+datatypes::ResultStatus OtaHelper::GetUpdtTaskStatus(std::uint16_t task_id, datatypes::MPUGetStatusResp &resp,
+                                                     std::int32_t timeout_ms) {
+  CommonAPI::CallStatus call_status;
+
+  FOTAMPUUpdate::MPUGetStatusResp local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->GetUpdtTaskStatus(task_id, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    resp.task_id = local_resp.getTaskID();
+    resp.current_status = local_resp.getCurrentStatus();
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
+datatypes::ResultStatus OtaHelper::ReqSwitchResult(std::uint16_t task_id, datatypes::MPUSwitchResultResp &resp,
+                                                   std::int32_t timeout_ms) {
+  CommonAPI::CallStatus call_status;
+
+  std::string local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->ReqSwitchResult(task_id, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    nlohmann::json j = nlohmann::json::parse(local_resp);
+    resp.task_id = j["taskID"].get<std::uint16_t>();
+    resp.switch_type = j["switchType"].get<std::uint8_t>();
+    resp.status_switch_result = j["statusSwitchResult"].get<std::uint8_t>();
+    resp.switch_process_percent = j["switchProcessPercent"].get<std::uint8_t>();
+    for (const auto &module_switch_result: j["moduleSwitchResults"]) {
+      datatypes::ModuleSwitchResult local_module_switch_result;
+      local_module_switch_result.module_id = module_switch_result["moduleID"].get<std::string>();
+      local_module_switch_result.switch_detailed_result =
+              module_switch_result["switchDetailedResult"].get<std::uint8_t>();
+      local_module_switch_result.module_switch_process_percent =
+              module_switch_result["moduleSwitchProcessPercent"].get<std::uint8_t>();
+      resp.module_switch_results.push_back(local_module_switch_result);
+    }
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
 } // namespace ota
