@@ -65,6 +65,7 @@ set(GEN_SRC_DIR ${CMAKE_SOURCE_DIR}/src-gen)
 
 add_library(otatester SHARED
   src/ota_helper.cpp
+  src/ota_helper_py.cpp
 	${GEN_SRC_DIR}/v1/commonapi/ota/FOTAMPUUpdateSomeIPProxy.cpp
   ${GEN_SRC_DIR}/v1/commonapi/ota/FOTAMPUUpdateSomeIPDeployment.cpp
 )
