@@ -20,6 +20,7 @@ function(BuildCommonAPI)
         COMMAND ${CMAKE_COMMAND}
             -S ${SRC_DIR}
             -B ${BUILD_DIR}
+            -DBUILD_SHARED_LIBS=ON
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
             ${RPATH_OPTIONS}

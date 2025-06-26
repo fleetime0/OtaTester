@@ -19,6 +19,7 @@ function(BuildJson)
     set(CMAKE_CONFIG_CMD ${CMAKE_COMMAND}
         -S ${SRC_DIR}
         -B ${BUILD_DIR}
+        -DBUILD_SHARED_LIBS=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
         -DJSON_BuildTests=OFF

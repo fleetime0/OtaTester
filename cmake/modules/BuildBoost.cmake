@@ -21,6 +21,8 @@ function(BuildBoost)
         COMMAND ${CMAKE_COMMAND}
             -S ${SRC_DIR}
             -B ${BUILD_DIR}
+            -DBUILD_SHARED_LIBS=ON
+            -DBOOST_INSTALL_LAYOUT=system
             -DBOOST_INCLUDE_LIBRARIES=${COMPONENTS}
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
@@ -33,7 +35,7 @@ function(BuildBoost)
     endif()
 
     execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} --target install
+        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} --config ${CMAKE_BUILD_TYPE} --target install
         RESULT_VARIABLE BUILD_RESULT
     )
 
