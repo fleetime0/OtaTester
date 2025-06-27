@@ -2,7 +2,7 @@ function(BuildBoost)
     set(SRC_DIR "${CMAKE_SOURCE_DIR}/3rdparty/boost")
     set(BUILD_DIR "${CMAKE_BINARY_DIR}/boost-build")
     set(INSTALL_DIR "${CMAKE_BINARY_DIR}/3rdparty")
-    set(COMPONENTS "system\;thread\;filesystem")
+    set(COMPONENTS "system\;thread\;filesystem\;asio\;icl\;property_tree\;foreach")
 
     if (EXISTS "${INSTALL_DIR}/include/boost")
         return()
