@@ -3,6 +3,12 @@
 
 #include <stdint.h>
 
+#if defined(_WIN32) || defined(__CYGWIN__)
+#define OTA_HELPER_API __declspec(dllexport)
+#else
+#define OTA_HELPER_API
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -95,42 +101,33 @@ struct SomeipMPUSwitchResultResp {
   SomeipModuleSwitchResult *module_switch_results;
 };
 
-someip_handle someip_create_handle();
-void someip_destroy_handle(someip_handle handle);
-bool check_connection(someip_handle handle, int32_t timeout_ms);
-SomeipResultStatus bldupdt_task(someip_handle handle,
-                                const SomeipMPUUpdateTaskBuildingReq *req,
-                                SomeipMPUUpdateTaskBuildingResp *resp,
-                                int32_t timeout_ms);
+OTA_HELPER_API someip_handle someip_create_handle();
+OTA_HELPER_API void someip_destroy_handle(someip_handle handle);
+OTA_HELPER_API bool check_connection(someip_handle handle, int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus bldupdt_task(someip_handle handle, const SomeipMPUUpdateTaskBuildingReq *req,
+                                               SomeipMPUUpdateTaskBuildingResp *resp, int32_t timeout_ms);
 
-SomeipResultStatus stop_updt(someip_handle handle,
-                             const SomeipMPUUpdateStopReq *req,
-                             SomeipMPUUpdateStopResp *resp, int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus stop_updt(someip_handle handle, const SomeipMPUUpdateStopReq *req,
+                                            SomeipMPUUpdateStopResp *resp, int32_t timeout_ms);
 
-SomeipResultStatus stwr_trsmt_prgs(someip_handle handle, uint16_t task_id,
-                                   SomeipMPUTransmitProgressResp *resp,
-                                   int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus stwr_trsmt_prgs(someip_handle handle, uint16_t task_id,
+                                                  SomeipMPUTransmitProgressResp *resp, int32_t timeout_ms);
 
-SomeipResultStatus start_inst(someip_handle handle, uint16_t task_id,
-                              SomeipMPUInstallStartResp *resp,
-                              int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus start_inst(someip_handle handle, uint16_t task_id, SomeipMPUInstallStartResp *resp,
+                                             int32_t timeout_ms);
 
-SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
-                                   SomeipMPUInstallResultResp *resp,
-                                   int32_t timeout_ms);
-void free_req_inst_result(SomeipMPUInstallResultResp *resp);
-SomeipResultStatus switch_ab_bank(someip_handle handle, uint16_t task_id,
-                                  SomeipMPUStatusSwitchResp *resp,
-                                  int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
+                                                  SomeipMPUInstallResultResp *resp, int32_t timeout_ms);
+OTA_HELPER_API void free_req_inst_result(SomeipMPUInstallResultResp *resp);
+OTA_HELPER_API SomeipResultStatus switch_ab_bank(someip_handle handle, uint16_t task_id,
+                                                 SomeipMPUStatusSwitchResp *resp, int32_t timeout_ms);
 
-SomeipResultStatus get_updt_task_status(someip_handle handle, uint16_t task_id,
-                                        SomeipMPUGetStatusResp *resp,
-                                        int32_t timeout_ms);
+OTA_HELPER_API SomeipResultStatus get_updt_task_status(someip_handle handle, uint16_t task_id,
+                                                       SomeipMPUGetStatusResp *resp, int32_t timeout_ms);
 
-SomeipResultStatus req_switch_result(someip_handle handle, uint16_t task_id,
-                                     SomeipMPUSwitchResultResp *resp,
-                                     int32_t timeout_ms);
-void free_req_switch_result(SomeipMPUSwitchResultResp *resp);
+OTA_HELPER_API SomeipResultStatus req_switch_result(someip_handle handle, uint16_t task_id,
+                                                    SomeipMPUSwitchResultResp *resp, int32_t timeout_ms);
+OTA_HELPER_API void free_req_switch_result(SomeipMPUSwitchResultResp *resp);
 
 #ifdef __cplusplus
 }

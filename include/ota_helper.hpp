@@ -6,6 +6,12 @@
 #include <string>
 #include <vector>
 
+#if defined(_WIN32) || defined(__CYGWIN__)
+  #define OTA_HELPER_API __declspec(dllexport)
+#else
+  #define OTA_HELPER_API
+#endif
+
 namespace v1 {
 namespace commonapi {
 namespace ota {
@@ -112,7 +118,7 @@ enum class ResultStatus {
 
 } // namespace datatypes
 
-class OtaHelper {
+class OTA_HELPER_API OtaHelper {
   public:
   OtaHelper();
   ~OtaHelper() = default;
