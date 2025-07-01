@@ -39,7 +39,7 @@ function(BuildBoost)
     endif()
 
     execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} --config ${CMAKE_BUILD_TYPE} --target install
+        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} -j4 --config ${CMAKE_BUILD_TYPE} --target install
         RESULT_VARIABLE BUILD_RESULT
     )
 
