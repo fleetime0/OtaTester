@@ -6,6 +6,8 @@
 
 ```bash
 git submodule update --init --recursive
+./tool/commonapi_core_generator/commonapi-core-generator-linux-x86_64 -sk -d ./src-gen/ ./fidl/OtaTester.fidl
+./tool/commonapi_someip_generator/commonapi-someip-generator-linux-x86_64 -d ./src-gen/ ./fidl/OtaTester.fdepl
 ```
 
 ## 编译

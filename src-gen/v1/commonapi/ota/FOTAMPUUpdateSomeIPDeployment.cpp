@@ -19,6 +19,12 @@ namespace FOTAMPUUpdate_ {
 // Attribute-specific deployments
 
 // Argument-specific deployment
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t StopUpdt_MPUUpdateStopReqDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t StopUpdt_MPUUpdateStopRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t StartInst_MPUInstallStartRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t SwitchABBank_MPUStatusSwitchReqDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t SwitchABBank_MPUStatusSwitchRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t GetUpdtTaskStatus_MPUGetStatusRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
 
 // Broadcast-specific deployments
 

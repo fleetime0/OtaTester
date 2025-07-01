@@ -173,8 +173,8 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::StwrTrsmtPrgsAsync(
 }
 
 void FOTAMPUUpdateSomeIPProxy::StopUpdt(FOTAMPUUpdate::MPUUpdateStopReq _MPUUpdateStopReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUUpdateStopResp &_MPUUpdateStopResp, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t> deploy_MPUUpdateStopReq(_MPUUpdateStopReq, static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t> deploy_MPUUpdateStopResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t> deploy_MPUUpdateStopReq(_MPUUpdateStopReq, &::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t> deploy_MPUUpdateStopResp(&::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopRespDeployment);
     CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -201,8 +201,8 @@ void FOTAMPUUpdateSomeIPProxy::StopUpdt(FOTAMPUUpdate::MPUUpdateStopReq _MPUUpda
 }
 
 std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::StopUpdtAsync(const FOTAMPUUpdate::MPUUpdateStopReq &_MPUUpdateStopReq, StopUpdtAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t> deploy_MPUUpdateStopReq(_MPUUpdateStopReq, static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t> deploy_MPUUpdateStopResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t> deploy_MPUUpdateStopReq(_MPUUpdateStopReq, &::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUUpdateStopResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t> deploy_MPUUpdateStopResp(&::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopRespDeployment);
     return CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -232,7 +232,7 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::StopUpdtAsync(const
 
 void FOTAMPUUpdateSomeIPProxy::StartInst(uint16_t _MPUInstallStartReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUInstallStartResp &_MPUInstallStartResp, const CommonAPI::CallInfo *_info) {
     CommonAPI::Deployable< uint16_t, CommonAPI::SomeIP::IntegerDeployment<uint16_t>> deploy_MPUInstallStartReq(_MPUInstallStartReq, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUInstallStartResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t> deploy_MPUInstallStartResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUInstallStartResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t> deploy_MPUInstallStartResp(&::v1::commonapi::ota::FOTAMPUUpdate_::StartInst_MPUInstallStartRespDeployment);
     CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -260,7 +260,7 @@ void FOTAMPUUpdateSomeIPProxy::StartInst(uint16_t _MPUInstallStartReq, CommonAPI
 
 std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::StartInstAsync(const uint16_t &_MPUInstallStartReq, StartInstAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
     CommonAPI::Deployable< uint16_t, CommonAPI::SomeIP::IntegerDeployment<uint16_t>> deploy_MPUInstallStartReq(_MPUInstallStartReq, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUInstallStartResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t> deploy_MPUInstallStartResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUInstallStartResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t> deploy_MPUInstallStartResp(&::v1::commonapi::ota::FOTAMPUUpdate_::StartInst_MPUInstallStartRespDeployment);
     return CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -347,8 +347,8 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::ReqInstResultAsync(
 }
 
 void FOTAMPUUpdateSomeIPProxy::SwitchABBank(FOTAMPUUpdate::MPUStatusSwitchReq _MPUStatusSwitchReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUStatusSwitchResp &_MPUStatusSwitchResp, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t> deploy_MPUStatusSwitchReq(_MPUStatusSwitchReq, static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t> deploy_MPUStatusSwitchResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t> deploy_MPUStatusSwitchReq(_MPUStatusSwitchReq, &::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t> deploy_MPUStatusSwitchResp(&::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchRespDeployment);
     CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -375,8 +375,8 @@ void FOTAMPUUpdateSomeIPProxy::SwitchABBank(FOTAMPUUpdate::MPUStatusSwitchReq _M
 }
 
 std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::SwitchABBankAsync(const FOTAMPUUpdate::MPUStatusSwitchReq &_MPUStatusSwitchReq, SwitchABBankAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t> deploy_MPUStatusSwitchReq(_MPUStatusSwitchReq, static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t> deploy_MPUStatusSwitchResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t> deploy_MPUStatusSwitchReq(_MPUStatusSwitchReq, &::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUStatusSwitchResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t> deploy_MPUStatusSwitchResp(&::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchRespDeployment);
     return CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -406,7 +406,7 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::SwitchABBankAsync(c
 
 void FOTAMPUUpdateSomeIPProxy::GetUpdtTaskStatus(uint16_t _MPUGetStatusReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUGetStatusResp &_MPUGetStatusResp, const CommonAPI::CallInfo *_info) {
     CommonAPI::Deployable< uint16_t, CommonAPI::SomeIP::IntegerDeployment<uint16_t>> deploy_MPUGetStatusReq(_MPUGetStatusReq, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetStatusResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t> deploy_MPUGetStatusResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetStatusResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t> deploy_MPUGetStatusResp(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskStatus_MPUGetStatusRespDeployment);
     CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -434,7 +434,7 @@ void FOTAMPUUpdateSomeIPProxy::GetUpdtTaskStatus(uint16_t _MPUGetStatusReq, Comm
 
 std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::GetUpdtTaskStatusAsync(const uint16_t &_MPUGetStatusReq, GetUpdtTaskStatusAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
     CommonAPI::Deployable< uint16_t, CommonAPI::SomeIP::IntegerDeployment<uint16_t>> deploy_MPUGetStatusReq(_MPUGetStatusReq, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr));
-    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetStatusResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t> deploy_MPUGetStatusResp(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t* >(nullptr));
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetStatusResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t> deploy_MPUGetStatusResp(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskStatus_MPUGetStatusRespDeployment);
     return CommonAPI::SomeIP::ProxyHelper<
         CommonAPI::SomeIP::SerializableArguments<
             CommonAPI::Deployable<
@@ -481,7 +481,7 @@ void FOTAMPUUpdateSomeIPProxy::ReqSwitchResult(uint16_t _MPUSwitchResultReq, Com
     >::callMethodWithReply(
         *this,
         CommonAPI::SomeIP::method_id_t(0xa),
-        false,
+        true,
         false,
         (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
         deploy_MPUSwitchResultReq,
@@ -509,7 +509,7 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::ReqSwitchResultAsyn
     >::callMethodAsync(
         *this,
         CommonAPI::SomeIP::method_id_t(0xa),
-        false,
+        true,
         false,
         (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
         deploy_MPUSwitchResultReq,

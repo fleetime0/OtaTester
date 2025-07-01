@@ -64,6 +64,12 @@ typedef CommonAPI::SomeIP::StructDeployment<
 // Attribute-specific deployments
 
 // Argument-specific deployment
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t StopUpdt_MPUUpdateStopReqDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t StopUpdt_MPUUpdateStopRespDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t StartInst_MPUInstallStartRespDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t SwitchABBank_MPUStatusSwitchReqDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t SwitchABBank_MPUStatusSwitchRespDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t GetUpdtTaskStatus_MPUGetStatusRespDeployment;
 
 // Broadcast-specific deployments
 

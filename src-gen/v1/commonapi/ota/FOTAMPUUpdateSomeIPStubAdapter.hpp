@@ -149,8 +149,8 @@ public:
             &FOTAMPUUpdateStub::StopUpdt,
             false,
             _stub->hasElement(2),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopReqDeployment_t* >(nullptr)),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUUpdateStopRespDeployment_t* >(nullptr)))
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopReqDeployment),
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::StopUpdt_MPUUpdateStopRespDeployment))
         
         ,
         startInstStubDispatcher(
@@ -158,7 +158,7 @@ public:
             false,
             _stub->hasElement(3),
             std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr)),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRespDeployment_t* >(nullptr)))
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::StartInst_MPUInstallStartRespDeployment))
         
         ,
         reqInstResultStubDispatcher(
@@ -173,8 +173,8 @@ public:
             &FOTAMPUUpdateStub::SwitchABBank,
             false,
             _stub->hasElement(5),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t* >(nullptr)),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t* >(nullptr)))
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchReqDeployment),
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::SwitchABBank_MPUStatusSwitchRespDeployment))
         
         ,
         getUpdtTaskStatusStubDispatcher(
@@ -182,7 +182,7 @@ public:
             false,
             _stub->hasElement(6),
             std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr)),
-            std::make_tuple(static_cast< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t* >(nullptr)))
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskStatus_MPUGetStatusRespDeployment))
         
         ,
         reqSwitchResultStubDispatcher(

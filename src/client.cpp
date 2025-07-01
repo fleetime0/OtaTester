@@ -17,20 +17,46 @@ int main() {
 
   std::this_thread::sleep_for(5s);
 
-  ota::datatypes::MPUStatusSwitchResp switch_abbank_req = {};
-  auto res = ota_helper.SwitchABBank(4097, switch_abbank_req, 5000);
-
+  ota::datatypes::MPUSwitchResultResp switch_result_resp;
+  auto res = ota_helper.ReqSwitchResult(4097, switch_result_resp, 5000);
   if (res != ota::datatypes::ResultStatus::SUCCESS) {
     std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
     return 0;
   }
-  std::cout << "SwitchABBank: task_id: " << static_cast<int>(switch_abbank_req.task_id)
-            << " switch_type: " << static_cast<int>(switch_abbank_req.switch_type)
-            << " switch_result: " << static_cast<int>(switch_abbank_req.switch_result) << std::endl;
-  if (switch_abbank_req.switch_result != 0x00) {
-    std::cout << "--------------- SwitchABBank failed ---------------" << std::endl;
-  }
-  std::cout << "--------------- SwitchABBank successful! ---------------" << std::endl;
+
+  std::cout << "ReqSwitchResult: task_id: " << static_cast<int>(switch_result_resp.task_id)
+            << " switch_type: " << static_cast<int>(switch_result_resp.switch_type)
+            << " status_switch_result: " << static_cast<int>(switch_result_resp.status_switch_result)
+            << " switch_process_percent: " << static_cast<int>(switch_result_resp.switch_process_percent) << std::endl;
+
+  // ota::datatypes::MPUStatusSwitchResp switch_abbank_resp = {};
+  // auto res = ota_helper.SwitchABBank(4097, switch_abbank_resp, 5000);
+
+  // if (res != ota::datatypes::ResultStatus::SUCCESS) {
+  //   std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
+  //   return 0;
+  // }
+  // std::cout << "SwitchABBank: task_id: " << static_cast<int>(switch_abbank_resp.task_id)
+  //           << " switch_type: " << static_cast<int>(switch_abbank_resp.switch_type)
+  //           << " switch_result: " << static_cast<int>(switch_abbank_resp.switch_result) << std::endl;
+  // if (switch_abbank_resp.switch_result != 0x00) {
+  //   std::cout << "--------------- SwitchABBank failed ---------------" << std::endl;
+  // }
+  // std::cout << "--------------- SwitchABBank successful! ---------------" << std::endl;
+
+  // ota::datatypes::MPUUpdateStopReq update_stop_req = {};
+  // update_stop_req.task_id = 4097;
+  // update_stop_req.stop_type = 1;
+  // ota::datatypes::MPUUpdateStopResp update_stop_resp = {};
+  // auto res = ota_helper.StopUpdt(update_stop_req, update_stop_resp, 5000);
+  // if (res != ota::datatypes::ResultStatus::SUCCESS) {
+  //   std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
+  //   return 0;
+  // }
+  // std::cout << "StopUpdt: task_id: " << static_cast<int>(update_stop_resp.task_id)
+  //           << " stop_type: " << static_cast<int>(update_stop_resp.stop_type)
+  //           << " StopResult: " << static_cast<int>(update_stop_resp.StopResult) << std::endl;
+  // if (switch_abbank_req.switch_result != 0x00) {
 
 
   // ota::datatypes::MPUUpdateTaskBuildingReq task_building_req = {};
@@ -54,11 +80,11 @@ int main() {
   // }
   // std::cout << "--------------- BldUpdtTask successful! ---------------" << std::endl;
 
-  // std::this_thread::sleep_for(1s);
+  // std::this_thread::sleep_for(5s);
 
   // ota::datatypes::MPUTransmitProgressResp transmit_progress_resp = {};
   // do {
-  //   auto res = ota_helper.StwrTrsmtPrgs(1111, transmit_progress_resp, 5000);
+  //   auto res = ota_helper.StwrTrsmtPrgs(4097, transmit_progress_resp, 5000);
   //   if (res != ota::datatypes::ResultStatus::SUCCESS) {
   //     std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
   //     return 0;

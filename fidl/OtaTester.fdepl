@@ -9,6 +9,7 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         in {
             MPUUpdateTaskBuildingReq {
+                SomeIpStringEncoding = utf8
                 SomeIpStringLengthWidth = 4
             }
         }
@@ -19,6 +20,7 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         out {
             MPUTransmitProgressResp {
+                SomeIpStringEncoding = utf8
                 SomeIpStringLengthWidth = 4
             }
         }
@@ -29,12 +31,16 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         in {
             MPUUpdateStopReq {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         }
         out {
             MPUUpdateStopResp {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         }
     }
@@ -44,7 +50,9 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         out {
             MPUInstallStartResp {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         }
     }
@@ -54,6 +62,7 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         out {
             MPUInstallResultResp {
+                SomeIpStringEncoding = utf8
                 SomeIpStringLengthWidth = 4
             }
         } 
@@ -64,12 +73,16 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         in {
             MPUStatusSwitchReq {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         }
         out {
             MPUStatusSwitchResp {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         } 
     }
@@ -79,15 +92,19 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
         SomeIpReliable = true
         out {
             MPUGetStatusResp {
-                SomeIpStructLengthWidth = 4
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
             }
         }
     }
 
     method ReqSwitchResult {
         SomeIpMethodID = 10
+        SomeIpReliable = true
         out {
             MPUSwitchResultResp {
+                SomeIpStringEncoding = utf8
                 SomeIpStringLengthWidth = 4
             }
         }
