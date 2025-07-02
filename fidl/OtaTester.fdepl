@@ -109,6 +109,29 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ota.FOTAMP
             }
         }
     }
+
+    method GetUpdtTaskLog {
+        SomeIpMethodID = 9
+        SomeIpReliable = true
+        in {
+            MPUGetUpdateLogReq {
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                    url {
+                        SomeIpStringEncoding = utf8
+                        SomeIpStringLengthWidth = 4
+                    }
+                }
+            }
+        }
+        out {
+            MPUGetUpdateLogResp {
+                #struct {
+                    SomeIpStructLengthWidth = 4
+                }
+            }
+        }
+    }
 }
 
 define org.genivi.commonapi.someip.deployment for provider as Service {

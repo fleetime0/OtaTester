@@ -32,7 +32,7 @@ function(BuildCommonAPI)
     endif()
 
     execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} -j1 --target install
+        COMMAND ${CMAKE_COMMAND} --build ${BUILD_DIR} -j2 --target install
         RESULT_VARIABLE BUILD_RESULT
     )
 

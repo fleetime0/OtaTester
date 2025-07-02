@@ -17,17 +17,31 @@ int main() {
 
   std::this_thread::sleep_for(5s);
 
-  ota::datatypes::MPUSwitchResultResp switch_result_resp;
-  auto res = ota_helper.ReqSwitchResult(4097, switch_result_resp, 5000);
+  ota::datatypes::MPUGetUpdateLogReq update_log_req = {};
+  update_log_req.task_id = 2;
+  update_log_req.url = "http://172.31.48.2:8080/ota/.log/tmp379kbvfxbbh/IPD";
+  ota::datatypes::MPUGetUpdateLogResp update_log_resp = {};
+  update_log_resp.task_id = 1111;
+  auto res = ota_helper.GetUpdtTaskLog(update_log_req, update_log_resp, 5000);
   if (res != ota::datatypes::ResultStatus::SUCCESS) {
     std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
     return 0;
   }
+  std::cout << "GetUpdtTaskLog: task_id: " << static_cast<int>(update_log_resp.task_id)
+            << " upload_result: " << static_cast<int>(update_log_resp.upload_result) << std::endl;
 
-  std::cout << "ReqSwitchResult: task_id: " << static_cast<int>(switch_result_resp.task_id)
-            << " switch_type: " << static_cast<int>(switch_result_resp.switch_type)
-            << " status_switch_result: " << static_cast<int>(switch_result_resp.status_switch_result)
-            << " switch_process_percent: " << static_cast<int>(switch_result_resp.switch_process_percent) << std::endl;
+  // ota::datatypes::MPUSwitchResultResp switch_result_resp;
+  // auto res = ota_helper.ReqSwitchResult(4097, switch_result_resp, 5000);
+  // if (res != ota::datatypes::ResultStatus::SUCCESS) {
+  //   std::cout << "vsomeip: error: " << static_cast<int>(res) << std::endl;
+  //   return 0;
+  // }
+
+  // std::cout << "ReqSwitchResult: task_id: " << static_cast<int>(switch_result_resp.task_id)
+  //           << " switch_type: " << static_cast<int>(switch_result_resp.switch_type)
+  //           << " status_switch_result: " << static_cast<int>(switch_result_resp.status_switch_result)
+  //           << " switch_process_percent: " << static_cast<int>(switch_result_resp.switch_process_percent) <<
+  //           std::endl;
 
   // ota::datatypes::MPUStatusSwitchResp switch_abbank_resp = {};
   // auto res = ota_helper.SwitchABBank(4097, switch_abbank_resp, 5000);

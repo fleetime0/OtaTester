@@ -43,6 +43,16 @@ interface FOTAMPUUpdate {
         UInt8 CurrentStatus
     }
 
+    struct MPUGetUpdateLogReq {
+        UInt16 TaskID
+        String url
+    }
+
+    struct MPUGetUpdateLogResp {
+        UInt16 TaskID
+        UInt8 UploadResult
+    }
+
     method BldUpdtTask {
         in {
             String MPUUpdateTaskBuildingReq
@@ -112,6 +122,15 @@ interface FOTAMPUUpdate {
         }
         out {
             String MPUSwitchResultResp
+        }
+    }
+
+    method GetUpdtTaskLog {
+        in {
+            MPUGetUpdateLogReq MPUGetUpdateLogReq
+        }
+        out {
+            MPUGetUpdateLogResp MPUGetUpdateLogResp
         }
     }
 }

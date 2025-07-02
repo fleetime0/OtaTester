@@ -4,7 +4,7 @@ services:
     container_name: ubuntu-build
     volumes:
       - .:/workspace
-    user: "1000:1000"
+    user: "${UID_}:${GID_}"
     working_dir: /workspace
     command: >
       bash -c "

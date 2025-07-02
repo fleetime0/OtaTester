@@ -25,6 +25,8 @@ namespace FOTAMPUUpdate_ {
 ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t SwitchABBank_MPUStatusSwitchReqDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
 ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t SwitchABBank_MPUStatusSwitchRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
 ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t GetUpdtTaskStatus_MPUGetStatusRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t GetUpdtTaskLog_MPUGetUpdateLogReqDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr));
+::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t GetUpdtTaskLog_MPUGetUpdateLogRespDeployment(4, static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint8_t>* >(nullptr));
 
 // Broadcast-specific deployments
 

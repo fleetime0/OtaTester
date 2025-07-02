@@ -7,9 +7,9 @@
 #include <vector>
 
 #if defined(_WIN32) || defined(__CYGWIN__)
-  #define OTA_HELPER_API __declspec(dllexport)
+#define OTA_HELPER_API __declspec(dllexport)
 #else
-  #define OTA_HELPER_API
+#define OTA_HELPER_API
 #endif
 
 namespace v1 {
@@ -102,6 +102,16 @@ struct MPUSwitchResultResp {
   std::uint8_t status_switch_result;
   std::uint8_t switch_process_percent;
   std::vector<ModuleSwitchResult> module_switch_results;
+};
+
+struct MPUGetUpdateLogReq {
+  std::uint16_t task_id;
+  std::string url;
+};
+
+struct MPUGetUpdateLogResp {
+  std::uint16_t task_id;
+  std::uint8_t upload_result;
 };
 
 enum class ResultStatus {
@@ -209,6 +219,17 @@ class OTA_HELPER_API OtaHelper {
    */
   datatypes::ResultStatus ReqSwitchResult(std::uint16_t task_id, datatypes::MPUSwitchResultResp &resp,
                                           std::int32_t timeout_ms);
+
+  /**
+   * @brief 获取日志
+   * @param task_id OTA任务ID
+   * @param url 被升级MCU传输日志的url（http post）
+   * @param resp 获取日志应答
+   * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
+   * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
+   */
+  datatypes::ResultStatus GetUpdtTaskLog(const datatypes::MPUGetUpdateLogReq &req, datatypes::MPUGetUpdateLogResp &resp,
+                                         std::int32_t timeout_ms);
 
   private:
   std::shared_ptr<v1::commonapi::ota::FOTAMPUUpdateProxy<>> proxy_;

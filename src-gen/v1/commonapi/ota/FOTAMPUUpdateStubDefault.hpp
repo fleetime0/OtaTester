@@ -109,6 +109,12 @@ public:
         std::string MPUSwitchResultResp = "";
         _reply(MPUSwitchResultResp);
     }
+    COMMONAPI_EXPORT virtual void GetUpdtTaskLog(const std::shared_ptr<CommonAPI::ClientId> _client, FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, GetUpdtTaskLogReply_t _reply) {
+        (void)_client;
+        (void)_MPUGetUpdateLogReq;
+        FOTAMPUUpdate::MPUGetUpdateLogResp MPUGetUpdateLogResp = {};
+        _reply(MPUGetUpdateLogResp);
+    }
 
 
 protected:

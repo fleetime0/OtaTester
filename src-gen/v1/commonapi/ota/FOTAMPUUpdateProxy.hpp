@@ -237,6 +237,27 @@ public:
      * It will provide the same value for CallStatus as will be handed to the callback.
      */
     virtual std::future<CommonAPI::CallStatus> ReqSwitchResultAsync(const uint16_t &_MPUSwitchResultReq, ReqSwitchResultAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
+    /**
+     * Calls GetUpdtTaskLog with synchronous semantics.
+     *
+     * All const parameters are input parameters to this method.
+     * All non-const parameters will be filled with the returned values.
+     * The CallStatus will be filled when the method returns and indicate either
+     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
+     * will be set.
+     */
+    virtual void GetUpdtTaskLog(FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUGetUpdateLogResp &_MPUGetUpdateLogResp, const CommonAPI::CallInfo *_info = nullptr);
+    /**
+     * Calls GetUpdtTaskLog with asynchronous semantics.
+     *
+     * The provided callback will be called when the reply to this call arrives or
+     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
+     * or which type of error has occurred. In case of any error, ONLY the CallStatus
+     * will have a defined value.
+     * The std::future returned by this method will be fulfilled at arrival of the reply.
+     * It will provide the same value for CallStatus as will be handed to the callback.
+     */
+    virtual std::future<CommonAPI::CallStatus> GetUpdtTaskLogAsync(const FOTAMPUUpdate::MPUGetUpdateLogReq &_MPUGetUpdateLogReq, GetUpdtTaskLogAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
 
 
 
@@ -331,6 +352,15 @@ void FOTAMPUUpdateProxy<_AttributeExtensions...>::ReqSwitchResult(uint16_t _MPUS
 template <typename ... _AttributeExtensions>
 std::future<CommonAPI::CallStatus> FOTAMPUUpdateProxy<_AttributeExtensions...>::ReqSwitchResultAsync(const uint16_t &_MPUSwitchResultReq, ReqSwitchResultAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
     return delegate_->ReqSwitchResultAsync(_MPUSwitchResultReq, _callback, _info);
+}
+template <typename ... _AttributeExtensions>
+void FOTAMPUUpdateProxy<_AttributeExtensions...>::GetUpdtTaskLog(FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUGetUpdateLogResp &_MPUGetUpdateLogResp, const CommonAPI::CallInfo *_info) {
+    delegate_->GetUpdtTaskLog(_MPUGetUpdateLogReq, _internalCallStatus, _MPUGetUpdateLogResp, _info);
+}
+
+template <typename ... _AttributeExtensions>
+std::future<CommonAPI::CallStatus> FOTAMPUUpdateProxy<_AttributeExtensions...>::GetUpdtTaskLogAsync(const FOTAMPUUpdate::MPUGetUpdateLogReq &_MPUGetUpdateLogReq, GetUpdtTaskLogAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
+    return delegate_->GetUpdtTaskLogAsync(_MPUGetUpdateLogReq, _callback, _info);
 }
 
 template <typename ... _AttributeExtensions>

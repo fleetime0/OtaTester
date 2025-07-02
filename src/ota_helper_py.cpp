@@ -349,12 +349,15 @@ SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
   resp->install_percent = tempres.install_percent;
 
   if (tempres.module_install_results.empty()) {
-    resp->module_install_results = nullptr;
+    // resp->module_install_results = nullptr;
     resp->result_len = 0;
   } else {
     resp->result_len = tempres.module_install_results.size();
-    resp->module_install_results =
-        new SomeipModuleInstallResult[resp->result_len];
+
+    if (resp->result_len>MAX_RESULT_ARRAY_LEN)
+    {
+      resp->result_len=MAX_RESULT_ARRAY_LEN;
+    }
 
     for (std::uint32_t i = 0; i < resp->result_len; ++i) {
 
@@ -371,13 +374,13 @@ SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
 
   return static_cast<SomeipResultStatus>(result);
 }
-void free_req_inst_result(SomeipMPUInstallResultResp *resp) {
-  if (resp == nullptr || resp->result_len == 0 ||
-      resp->module_install_results == nullptr) {
-    return;
-  }
-  delete[] resp->module_install_results;
-}
+// void free_req_inst_result(SomeipMPUInstallResultResp *resp) {
+//   if (resp == nullptr || resp->result_len == 0 ||
+//       resp->module_install_results == nullptr) {
+//     return;
+//   }
+//   delete[] resp->module_install_results;
+// }
 
 SomeipResultStatus switch_ab_bank(someip_handle handle, uint16_t task_id,
                                   SomeipMPUStatusSwitchResp *resp,
@@ -422,12 +425,17 @@ SomeipResultStatus req_switch_result(someip_handle handle, uint16_t task_id,
   resp->switch_process_percent = tempres.switch_process_percent;
 
   if (tempres.module_switch_results.empty()) {
-    resp->module_switch_results = nullptr;
+    // resp->module_switch_results = nullptr;
     resp->result_len = 0;
   } else {
     resp->result_len = tempres.module_switch_results.size();
-    resp->module_switch_results =
-        new SomeipModuleSwitchResult[resp->result_len];
+    // resp->module_switch_results =
+    //     new SomeipModuleSwitchResult[resp->result_len];
+
+    if (resp->result_len>MAX_RESULT_ARRAY_LEN)
+    {
+      resp->result_len=MAX_RESULT_ARRAY_LEN;
+    }
 
     for (std::int32_t i = 0; i < resp->result_len; ++i) {
 
@@ -444,10 +452,27 @@ SomeipResultStatus req_switch_result(someip_handle handle, uint16_t task_id,
 
   return static_cast<SomeipResultStatus>(result);
 }
-void free_req_switch_result(SomeipMPUSwitchResultResp *resp) {
-  if (resp == nullptr || resp->result_len == 0 ||
-      resp->module_switch_results == nullptr) {
-    return;
-  }
-  delete[] resp->module_switch_results;
+// void free_req_switch_result(SomeipMPUSwitchResultResp *resp) {
+//   if (resp == nullptr || resp->result_len == 0 ||
+//       resp->module_switch_results == nullptr) {
+//     return;
+//   }
+//   delete[] resp->module_switch_results;
+// }
+
+SomeipResultStatus get_updt_task_log(someip_handle handle,SomeipMPUGetUpdateLogReq *req, SomeipMPUGetUpdateLogResp*resp, int32_t timeout_ms)
+{
+  ota::datatypes::MPUGetUpdateLogReq tempreq{
+      req->task_id,
+      std::string(req->url,req->url_len)
+  };
+
+  ota::datatypes::MPUGetUpdateLogResp tempres;
+  auto result = static_cast<ota::OtaHelper *>(handle)->GetUpdtTaskLog(
+      tempreq, tempres, timeout_ms);
+
+  resp->upload_result = tempres.upload_result;
+  resp->task_id = tempres.task_id;
+
+  return static_cast<SomeipResultStatus>(result);
 }

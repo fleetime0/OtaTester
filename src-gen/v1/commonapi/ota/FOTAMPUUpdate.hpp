@@ -24,6 +24,7 @@
 #include <CommonAPI/Struct.hpp>
 #include <CommonAPI/Types.hpp>
 #include <cstdint>
+#include <string>
 
 #if defined (HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE)
 #undef COMMONAPI_INTERNAL_COMPILATION
@@ -212,6 +213,54 @@ public:
         return (getTaskID() == _other.getTaskID() && getCurrentStatus() == _other.getCurrentStatus());
         }
         inline bool operator!=(const MPUGetStatusResp &_other) const {
+            return !((*this) == _other);
+        }
+    
+    };
+    struct MPUGetUpdateLogReq : CommonAPI::Struct< uint16_t, std::string> {
+    
+        MPUGetUpdateLogReq()
+        {
+            std::get< 0>(values_) = 0u;
+            std::get< 1>(values_) = "";
+        }
+        MPUGetUpdateLogReq(const uint16_t &_TaskID, const std::string &_url)
+        {
+            std::get< 0>(values_) = _TaskID;
+            std::get< 1>(values_) = _url;
+        }
+        inline const uint16_t &getTaskID() const { return std::get< 0>(values_); }
+        inline void setTaskID(const uint16_t &_value) { std::get< 0>(values_) = _value; }
+        inline const std::string &getUrl() const { return std::get< 1>(values_); }
+        inline void setUrl(const std::string &_value) { std::get< 1>(values_) = _value; }
+        inline bool operator==(const MPUGetUpdateLogReq& _other) const {
+        return (getTaskID() == _other.getTaskID() && getUrl() == _other.getUrl());
+        }
+        inline bool operator!=(const MPUGetUpdateLogReq &_other) const {
+            return !((*this) == _other);
+        }
+    
+    };
+    struct MPUGetUpdateLogResp : CommonAPI::Struct< uint16_t, uint8_t> {
+    
+        MPUGetUpdateLogResp()
+        {
+            std::get< 0>(values_) = 0u;
+            std::get< 1>(values_) = 0u;
+        }
+        MPUGetUpdateLogResp(const uint16_t &_TaskID, const uint8_t &_UploadResult)
+        {
+            std::get< 0>(values_) = _TaskID;
+            std::get< 1>(values_) = _UploadResult;
+        }
+        inline const uint16_t &getTaskID() const { return std::get< 0>(values_); }
+        inline void setTaskID(const uint16_t &_value) { std::get< 0>(values_) = _value; }
+        inline const uint8_t &getUploadResult() const { return std::get< 1>(values_); }
+        inline void setUploadResult(const uint8_t &_value) { std::get< 1>(values_) = _value; }
+        inline bool operator==(const MPUGetUpdateLogResp& _other) const {
+        return (getTaskID() == _other.getTaskID() && getUploadResult() == _other.getUploadResult());
+        }
+        inline bool operator!=(const MPUGetUpdateLogResp &_other) const {
             return !((*this) == _other);
         }
     

@@ -58,6 +58,14 @@ typedef CommonAPI::SomeIP::StructDeployment<
     CommonAPI::SomeIP::IntegerDeployment<uint16_t>,
     CommonAPI::SomeIP::IntegerDeployment<uint8_t>
 > MPUGetStatusRespDeployment_t;
+typedef CommonAPI::SomeIP::StructDeployment<
+    CommonAPI::SomeIP::IntegerDeployment<uint16_t>,
+    CommonAPI::SomeIP::StringDeployment
+> MPUGetUpdateLogReqDeployment_t;
+typedef CommonAPI::SomeIP::StructDeployment<
+    CommonAPI::SomeIP::IntegerDeployment<uint16_t>,
+    CommonAPI::SomeIP::IntegerDeployment<uint8_t>
+> MPUGetUpdateLogRespDeployment_t;
 
 // Type-specific deployments
 
@@ -70,6 +78,8 @@ COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUInstallStartRes
 COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchReqDeployment_t SwitchABBank_MPUStatusSwitchReqDeployment;
 COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUStatusSwitchRespDeployment_t SwitchABBank_MPUStatusSwitchRespDeployment;
 COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetStatusRespDeployment_t GetUpdtTaskStatus_MPUGetStatusRespDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t GetUpdtTaskLog_MPUGetUpdateLogReqDeployment;
+COMMONAPI_EXPORT extern ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t GetUpdtTaskLog_MPUGetUpdateLogRespDeployment;
 
 // Broadcast-specific deployments
 

@@ -231,4 +231,26 @@ datatypes::ResultStatus OtaHelper::ReqSwitchResult(std::uint16_t task_id, dataty
   return static_cast<datatypes::ResultStatus>(call_status);
 }
 
+datatypes::ResultStatus OtaHelper::GetUpdtTaskLog(const datatypes::MPUGetUpdateLogReq &req,
+                                                  datatypes::MPUGetUpdateLogResp &resp, std::int32_t timeout_ms) {
+  FOTAMPUUpdate::MPUGetUpdateLogReq local_req;
+  local_req.setTaskID(req.task_id);
+  local_req.setUrl(req.url);
+
+  CommonAPI::CallStatus call_status;
+
+  FOTAMPUUpdate::MPUGetUpdateLogResp local_resp;
+
+  CommonAPI::CallInfo info;
+  info.timeout_ = timeout_ms;
+  proxy_->GetUpdtTaskLog(local_req, call_status, local_resp, &info);
+
+  if (call_status == CommonAPI::CallStatus::SUCCESS) {
+    resp.task_id = local_resp.getTaskID();
+    resp.upload_result = local_resp.getUploadResult();
+  }
+
+  return static_cast<datatypes::ResultStatus>(call_status);
+}
+
 } // namespace ota

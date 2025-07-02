@@ -520,6 +520,64 @@ std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::ReqSwitchResultAsyn
         std::make_tuple(deploy_MPUSwitchResultResp));
 }
 
+void FOTAMPUUpdateSomeIPProxy::GetUpdtTaskLog(FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUGetUpdateLogResp &_MPUGetUpdateLogResp, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetUpdateLogReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t> deploy_MPUGetUpdateLogReq(_MPUGetUpdateLogReq, &::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetUpdateLogResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t> deploy_MPUGetUpdateLogResp(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogRespDeployment);
+    CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                FOTAMPUUpdate::MPUGetUpdateLogReq,
+                ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                FOTAMPUUpdate::MPUGetUpdateLogResp,
+                ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t
+            >
+        >
+    >::callMethodWithReply(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x9),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_MPUGetUpdateLogReq,
+        _internalCallStatus,
+        deploy_MPUGetUpdateLogResp);
+    _MPUGetUpdateLogResp = deploy_MPUGetUpdateLogResp.getValue();
+}
+
+std::future<CommonAPI::CallStatus> FOTAMPUUpdateSomeIPProxy::GetUpdtTaskLogAsync(const FOTAMPUUpdate::MPUGetUpdateLogReq &_MPUGetUpdateLogReq, GetUpdtTaskLogAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetUpdateLogReq, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t> deploy_MPUGetUpdateLogReq(_MPUGetUpdateLogReq, &::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogReqDeployment);
+    CommonAPI::Deployable< FOTAMPUUpdate::MPUGetUpdateLogResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t> deploy_MPUGetUpdateLogResp(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogRespDeployment);
+    return CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                FOTAMPUUpdate::MPUGetUpdateLogReq,
+                ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                FOTAMPUUpdate::MPUGetUpdateLogResp,
+                ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t
+            >
+        >
+    >::callMethodAsync(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x9),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_MPUGetUpdateLogReq,
+        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< FOTAMPUUpdate::MPUGetUpdateLogResp, ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t > _MPUGetUpdateLogResp) {
+            if (_callback)
+                _callback(_internalCallStatus, _MPUGetUpdateLogResp.getValue());
+        },
+        std::make_tuple(deploy_MPUGetUpdateLogResp));
+}
+
 void FOTAMPUUpdateSomeIPProxy::getOwnVersion(uint16_t& ownVersionMajor, uint16_t& ownVersionMinor) const {
     ownVersionMajor = 1;
     ownVersionMinor = 0;

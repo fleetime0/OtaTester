@@ -28,6 +28,7 @@
 #include <CommonAPI/OutputStream.hpp>
 #include <CommonAPI/Struct.hpp>
 #include <cstdint>
+#include <string>
 #include <vector>
 
 
@@ -102,11 +103,12 @@ public:
     typedef std::function<void (FOTAMPUUpdate::MPUStatusSwitchResp _MPUStatusSwitchResp)> SwitchABBankReply_t;
     typedef std::function<void (FOTAMPUUpdate::MPUGetStatusResp _MPUGetStatusResp)> GetUpdtTaskStatusReply_t;
     typedef std::function<void (std::string _MPUSwitchResultResp)> ReqSwitchResultReply_t;
+    typedef std::function<void (FOTAMPUUpdate::MPUGetUpdateLogResp _MPUGetUpdateLogResp)> GetUpdtTaskLogReply_t;
 
     virtual ~FOTAMPUUpdateStub() {}
     void lockInterfaceVersionAttribute(bool _lockAccess) { static_cast<void>(_lockAccess); }
     bool hasElement(const uint32_t _id) const {
-        return (_id < 8);
+        return (_id < 9);
     }
     virtual const CommonAPI::Version& getInterfaceVersion(std::shared_ptr<CommonAPI::ClientId> _client) = 0;
 
@@ -126,6 +128,8 @@ public:
     virtual void GetUpdtTaskStatus(const std::shared_ptr<CommonAPI::ClientId> _client, uint16_t _MPUGetStatusReq, GetUpdtTaskStatusReply_t _reply) = 0;
     /// This is the method that will be called on remote calls on the method ReqSwitchResult.
     virtual void ReqSwitchResult(const std::shared_ptr<CommonAPI::ClientId> _client, uint16_t _MPUSwitchResultReq, ReqSwitchResultReply_t _reply) = 0;
+    /// This is the method that will be called on remote calls on the method GetUpdtTaskLog.
+    virtual void GetUpdtTaskLog(const std::shared_ptr<CommonAPI::ClientId> _client, FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, GetUpdtTaskLogReply_t _reply) = 0;
 
 
     using CommonAPI::Stub<FOTAMPUUpdateStubAdapter, FOTAMPUUpdateStubRemoteEvent>::initStubAdapter;

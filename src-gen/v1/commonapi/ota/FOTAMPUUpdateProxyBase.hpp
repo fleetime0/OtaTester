@@ -24,6 +24,7 @@
 #include <CommonAPI/OutputStream.hpp>
 #include <CommonAPI/Struct.hpp>
 #include <cstdint>
+#include <string>
 #include <vector>
 
 #include <CommonAPI/Proxy.hpp>
@@ -51,6 +52,7 @@ public:
     typedef std::function<void(const CommonAPI::CallStatus&, const FOTAMPUUpdate::MPUStatusSwitchResp&)> SwitchABBankAsyncCallback;
     typedef std::function<void(const CommonAPI::CallStatus&, const FOTAMPUUpdate::MPUGetStatusResp&)> GetUpdtTaskStatusAsyncCallback;
     typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> ReqSwitchResultAsyncCallback;
+    typedef std::function<void(const CommonAPI::CallStatus&, const FOTAMPUUpdate::MPUGetUpdateLogResp&)> GetUpdtTaskLogAsyncCallback;
 
     virtual void BldUpdtTask(std::string _MPUUpdateTaskBuildingReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUUpdateTaskBuildingResp &_MPUUpdateTaskBuildingResp, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual std::future<CommonAPI::CallStatus> BldUpdtTaskAsync(const std::string &_MPUUpdateTaskBuildingReq, BldUpdtTaskAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
@@ -68,6 +70,8 @@ public:
     virtual std::future<CommonAPI::CallStatus> GetUpdtTaskStatusAsync(const uint16_t &_MPUGetStatusReq, GetUpdtTaskStatusAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual void ReqSwitchResult(uint16_t _MPUSwitchResultReq, CommonAPI::CallStatus &_internalCallStatus, std::string &_MPUSwitchResultResp, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual std::future<CommonAPI::CallStatus> ReqSwitchResultAsync(const uint16_t &_MPUSwitchResultReq, ReqSwitchResultAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
+    virtual void GetUpdtTaskLog(FOTAMPUUpdate::MPUGetUpdateLogReq _MPUGetUpdateLogReq, CommonAPI::CallStatus &_internalCallStatus, FOTAMPUUpdate::MPUGetUpdateLogResp &_MPUGetUpdateLogResp, const CommonAPI::CallInfo *_info = nullptr) = 0;
+    virtual std::future<CommonAPI::CallStatus> GetUpdtTaskLogAsync(const FOTAMPUUpdate::MPUGetUpdateLogReq &_MPUGetUpdateLogReq, GetUpdtTaskLogAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };

@@ -119,6 +119,14 @@ public:
         std::tuple< CommonAPI::SomeIP::StringDeployment>
     > reqSwitchResultStubDispatcher;
     
+    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+        ::v1::commonapi::ota::FOTAMPUUpdateStub,
+        std::tuple< FOTAMPUUpdate::MPUGetUpdateLogReq>,
+        std::tuple< FOTAMPUUpdate::MPUGetUpdateLogResp>,
+        std::tuple< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogReqDeployment_t>,
+        std::tuple< ::v1::commonapi::ota::FOTAMPUUpdate_::MPUGetUpdateLogRespDeployment_t>
+    > getUpdtTaskLogStubDispatcher;
+    
     FOTAMPUUpdateSomeIPStubAdapterInternal(
         const CommonAPI::SomeIP::Address &_address,
         const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection,
@@ -192,6 +200,14 @@ public:
             std::make_tuple(static_cast< CommonAPI::SomeIP::IntegerDeployment<uint16_t>* >(nullptr)),
             std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
         
+        ,
+        getUpdtTaskLogStubDispatcher(
+            &FOTAMPUUpdateStub::GetUpdtTaskLog,
+            false,
+            _stub->hasElement(8),
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogReqDeployment),
+            std::make_tuple(&::v1::commonapi::ota::FOTAMPUUpdate_::GetUpdtTaskLog_MPUGetUpdateLogRespDeployment))
+        
     {
         FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x1) }, &bldUpdtTaskStubDispatcher );
         FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x2) }, &stwrTrsmtPrgsStubDispatcher );
@@ -201,6 +217,7 @@ public:
         FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x7) }, &switchABBankStubDispatcher );
         FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x8) }, &getUpdtTaskStatusStubDispatcher );
         FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0xa) }, &reqSwitchResultStubDispatcher );
+        FOTAMPUUpdateSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x9) }, &getUpdtTaskLogStubDispatcher );
         // Provided events/fields
     }
 
