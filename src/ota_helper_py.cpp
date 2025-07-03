@@ -382,13 +382,13 @@ SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
 //   delete[] resp->module_install_results;
 // }
 
-SomeipResultStatus switch_ab_bank(someip_handle handle, uint16_t task_id,
-                                  SomeipMPUStatusSwitchResp *resp,
+SomeipResultStatus switch_ab_bank(someip_handle handle, SomeipMPUStatusSwitchReq *req, SomeipMPUStatusSwitchResp *resp,
                                   int32_t timeout_ms) {
+  ota::datatypes::MPUStatusSwitchReq tempreq{req->task_id, req->switch_type};
+                                
   ota::datatypes::MPUStatusSwitchResp tempres;
 
-  auto result = static_cast<ota::OtaHelper *>(handle)->SwitchABBank(
-      task_id, tempres, timeout_ms);
+  auto result = static_cast<ota::OtaHelper *>(handle)->SwitchABBank(tempreq, tempres, timeout_ms);
 
   resp->switch_result = tempres.switch_result;
   resp->switch_type = tempres.switch_type;

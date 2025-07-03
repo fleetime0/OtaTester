@@ -160,11 +160,11 @@ datatypes::ResultStatus OtaHelper::ReqInstResult(std::uint16_t task_id, datatype
   return static_cast<datatypes::ResultStatus>(call_status);
 }
 
-datatypes::ResultStatus OtaHelper::SwitchABBank(std::uint16_t task_id, datatypes::MPUStatusSwitchResp &resp,
-                                                std::int32_t timeout_ms) {
+datatypes::ResultStatus OtaHelper::SwitchABBank(const datatypes::MPUStatusSwitchReq &req,
+                                                datatypes::MPUStatusSwitchResp &resp, std::int32_t timeout_ms) {
   FOTAMPUUpdate::MPUStatusSwitchReq local_req;
-  local_req.setTaskID(task_id);
-  local_req.setSwitchType(1);
+  local_req.setTaskID(req.task_id);
+  local_req.setSwitchType(req.switch_type);
 
   CommonAPI::CallStatus call_status;
 

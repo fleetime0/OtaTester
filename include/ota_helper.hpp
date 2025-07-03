@@ -80,6 +80,11 @@ struct MPUInstallResultResp {
   std::vector<ModuleInstallResult> module_install_results;
 };
 
+struct MPUStatusSwitchReq {
+  std::uint16_t task_id;
+  std::uint8_t switch_type;
+};
+
 struct MPUStatusSwitchResp {
   std::uint16_t task_id;
   std::uint8_t switch_type;
@@ -197,7 +202,7 @@ class OTA_HELPER_API OtaHelper {
    * @param timeout_ms 超时时间（毫秒）；-1 表示无限等待
    * @return ResultStatus::SUCCESS 表示传输，其它值表示错误类型
    */
-  datatypes::ResultStatus SwitchABBank(std::uint16_t task_id, datatypes::MPUStatusSwitchResp &resp,
+  datatypes::ResultStatus SwitchABBank(const datatypes::MPUStatusSwitchReq &req, datatypes::MPUStatusSwitchResp &resp,
                                        std::int32_t timeout_ms);
 
   /**

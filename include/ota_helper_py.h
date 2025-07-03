@@ -79,6 +79,10 @@ struct SomeipMPUInstallResultResp {
   SomeipModuleInstallResult module_install_results[MAX_RESULT_ARRAY_LEN];
 };
 
+struct SomeipMPUStatusSwitchReq {
+  uint16_t task_id;
+  uint8_t switch_type;
+};
 struct SomeipMPUStatusSwitchResp {
   uint16_t task_id;
   uint8_t switch_type;
@@ -132,7 +136,7 @@ OTA_HELPER_API SomeipResultStatus start_inst(someip_handle handle, uint16_t task
 OTA_HELPER_API SomeipResultStatus req_inst_result(someip_handle handle, uint16_t task_id,
                                                   SomeipMPUInstallResultResp *resp, int32_t timeout_ms);
 // OTA_HELPER_API void free_req_inst_result(SomeipMPUInstallResultResp *resp);
-OTA_HELPER_API SomeipResultStatus switch_ab_bank(someip_handle handle, uint16_t task_id,
+OTA_HELPER_API SomeipResultStatus switch_ab_bank(someip_handle handle, SomeipMPUStatusSwitchReq *req,
                                                  SomeipMPUStatusSwitchResp *resp, int32_t timeout_ms);
 
 OTA_HELPER_API SomeipResultStatus get_updt_task_status(someip_handle handle, uint16_t task_id,
