@@ -19,7 +19,7 @@ int main() {
 
   ota::datatypes::MPUGetUpdateLogReq update_log_req = {};
   update_log_req.task_id = 2;
-  update_log_req.url = "http://172.31.48.2:8080/ota/.log/tmp379kbvfxbbh/IPD";
+  update_log_req.url = "http://172.31.48.02:8080/logs";
   ota::datatypes::MPUGetUpdateLogResp update_log_resp = {};
   update_log_resp.task_id = 1111;
   auto res = ota_helper.GetUpdtTaskLog(update_log_req, update_log_resp, 5000);
