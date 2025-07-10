@@ -20,6 +20,11 @@
             "service" : "0x1010",
             "instance" : "0x4",
             "reliable" : { "port" : "30517", "enable-magic-cookies" : "false" }
+        },
+        {
+            "service" : "0x1010",
+            "instance" : "0x7",
+            "reliable" : { "port" : "30517", "enable-magic-cookies" : "false" }
         }
     ],
     "clients" :
@@ -28,6 +33,11 @@
             "service" : "0x1010",
             "instance" : "0x4",
             "reliable" : [ " 46520" ]
+        },
+        {
+            "service" : "0x1010",
+            "instance" : "0x7",
+            "reliable" : [ " 46561" ]
         }
     ],
     "routing" : "otatester",

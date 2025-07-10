@@ -136,6 +136,9 @@ enum class ResultStatus {
 class OTA_HELPER_API OtaHelper {
   public:
   OtaHelper();
+
+// IPD: commonapi.ota.FOTAMPUUpdate; RIPD: commonapi.ota.FOTAMPUUpdate1
+  OtaHelper(const std::string &instance);
   ~OtaHelper() = default;
 
   /**

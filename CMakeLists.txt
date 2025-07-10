@@ -92,8 +92,13 @@ target_link_libraries(otatester PRIVATE
 )
 
 add_executable(otaclient src/client.cpp)
+add_executable(otaclient1 src/client1.cpp)
+
 
 target_link_libraries(otaclient PRIVATE
+  otatester
+)
+target_link_libraries(otaclient1 PRIVATE
   otatester
 )
 
@@ -143,6 +148,11 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/3rdparty/lib/
 )
 
 install(TARGETS otaclient
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(TARGETS otaclient1
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}

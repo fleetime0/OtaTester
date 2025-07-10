@@ -7,12 +7,12 @@
 using namespace std::chrono_literals;
 
 int main() {
-  ota::OtaHelper ota_helper("commonapi.ota.FOTAMPUUpdate");
+  ota::OtaHelper ota_helper("commonapi.ota.FOTAMPUUpdate1");
   bool is_conn = ota_helper.CheckConnection(5000);
   if (!is_conn) {
-    std::cout << "ipd connection failed!" << std::endl;
+    std::cout << "ripd connection failed!" << std::endl;
   } else {
-    std::cout << "ipd connection successful!" << std::endl;
+    std::cout << "ripd connection successful!" << std::endl;
   }
 
   // std::this_thread::sleep_for(5s);

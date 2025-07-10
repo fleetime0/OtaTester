@@ -139,4 +139,8 @@ define org.genivi.commonapi.someip.deployment for provider as Service {
         InstanceId = "commonapi.ota.FOTAMPUUpdate"
         SomeIpInstanceID = 4
     }
+    instance commonapi.ota.FOTAMPUUpdate {
+        InstanceId = "commonapi.ota.FOTAMPUUpdate1"
+        SomeIpInstanceID = 7
+    }
 }

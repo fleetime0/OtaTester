@@ -35,6 +35,9 @@ void initializeFOTAMPUUpdateSomeIPProxy() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
         "local:commonapi.ota.FOTAMPUUpdate:v1_0:commonapi.ota.FOTAMPUUpdate",
         0x1010, 0x4, 1, 0);
+    CommonAPI::SomeIP::AddressTranslator::get()->insert(
+        "local:commonapi.ota.FOTAMPUUpdate:v1_0:commonapi.ota.FOTAMPUUpdate1",
+        0x1010, 0x7, 1, 0);
     CommonAPI::SomeIP::Factory::get()->registerProxyCreateMethod(
         "commonapi.ota.FOTAMPUUpdate:v1_0",
         &createFOTAMPUUpdateSomeIPProxy);

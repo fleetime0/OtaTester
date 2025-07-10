@@ -20,6 +20,12 @@ OtaHelper::OtaHelper() {
   std::cout << "Hello World!" << std::endl;
 }
 
+OtaHelper::OtaHelper(const std::string &instance) {
+  auto runtime = CommonAPI::Runtime::get();
+  proxy_ = runtime->buildProxy<FOTAMPUUpdateProxy>("local", instance);
+  std::cout << "Hello World!" << std::endl;
+}
+
 bool OtaHelper::CheckConnection(std::int32_t timeout_ms) {
   if (timeout_ms == -1) {
     return proxy_->isAvailableBlocking();
