@@ -258,7 +258,13 @@ public:
 } // namespace ota
 #endif
 
-someip_handle someip_create_handle() { return new ota::OtaHelper(); }
+someip_handle someip_create_handle(const char *instance, uint32_t len) {
+  if(instance==nullptr || len==0)
+  {
+    return new ota::OtaHelper();
+  }
+  return new ota::OtaHelper(std::string(instance,len));
+}
 void someip_destroy_handle(someip_handle handle) {
   if (handle != nullptr) {
     delete static_cast<ota::OtaHelper *>(handle);

@@ -117,8 +117,7 @@ struct SomeipMPUGetUpdateLogResp {
   uint8_t upload_result;
 };
 
-
-OTA_HELPER_API someip_handle someip_create_handle();
+OTA_HELPER_API someip_handle someip_create_handle(const char *instance,uint32_t len);
 OTA_HELPER_API void someip_destroy_handle(someip_handle handle);
 OTA_HELPER_API bool check_connection(someip_handle handle, int32_t timeout_ms);
 OTA_HELPER_API SomeipResultStatus bldupdt_task(someip_handle handle, const SomeipMPUUpdateTaskBuildingReq *req,
